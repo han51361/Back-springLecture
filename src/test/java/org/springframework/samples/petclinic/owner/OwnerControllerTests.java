@@ -23,15 +23,18 @@ import java.util.List;
 import org.assertj.core.util.Lists;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.samples.petclinic.visit.Visit;
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
@@ -63,6 +66,16 @@ class OwnerControllerTests {
 	private VisitRepository visits;
 
 	private Owner george;
+
+	@Autowired
+	ApplicationContext applicationContext;
+
+	@Test
+	public void getBean(){
+		OwnerController bean = applicationContext.getBean(OwnerController.class);
+		assertThat(bean).isNotNull();
+
+	}
 
 	@BeforeEach
 	void setup() {
@@ -118,13 +131,13 @@ class OwnerControllerTests {
 
 	@Test
 	void testProcessFindFormSuccess() throws Exception {
-		given(this.owners.findByLastName("")).willReturn(Lists.newArrayList(george, new Owner()));
+		given(this.owners.findByFirstName("")).willReturn(Lists.newArrayList(george, new Owner()));
 		mockMvc.perform(get("/owners")).andExpect(status().isOk()).andExpect(view().name("owners/ownersList"));
 	}
 
 	@Test
 	void testProcessFindFormByLastName() throws Exception {
-		given(this.owners.findByLastName(george.getLastName())).willReturn(Lists.newArrayList(george));
+		given(this.owners.findByFirstName(george.getLastName())).willReturn(Lists.newArrayList(george));
 		mockMvc.perform(get("/owners").param("lastName", "Franklin")).andExpect(status().is3xxRedirection())
 				.andExpect(view().name("redirect:/owners/" + TEST_OWNER_ID));
 	}

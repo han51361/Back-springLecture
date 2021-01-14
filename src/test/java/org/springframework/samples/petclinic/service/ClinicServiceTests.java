@@ -83,10 +83,10 @@ class ClinicServiceTests {
 
 	@Test
 	void shouldFindOwnersByLastName() {
-		Collection<Owner> owners = this.owners.findByLastName("Davis");
+		Collection<Owner> owners = this.owners.findByFirstName("Davis");
 		assertThat(owners).hasSize(2);
 
-		owners = this.owners.findByLastName("Daviss");
+		owners = this.owners.findByFirstName("Daviss");
 		assertThat(owners).isEmpty();
 	}
 
@@ -102,7 +102,7 @@ class ClinicServiceTests {
 	@Test
 	@Transactional
 	void shouldInsertOwner() {
-		Collection<Owner> owners = this.owners.findByLastName("Schultz");
+		Collection<Owner> owners = this.owners.findByFirstName("Schultz");
 		int found = owners.size();
 
 		Owner owner = new Owner();
@@ -114,7 +114,7 @@ class ClinicServiceTests {
 		this.owners.save(owner);
 		assertThat(owner.getId().longValue()).isNotEqualTo(0);
 
-		owners = this.owners.findByLastName("Schultz");
+		owners = this.owners.findByFirstName("Schultz");
 		assertThat(owners.size()).isEqualTo(found + 1);
 	}
 
