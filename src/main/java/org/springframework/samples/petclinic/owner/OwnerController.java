@@ -40,7 +40,7 @@ import java.util.Map;
 class OwnerController {
 
 	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
-
+	//test
 	//autowired 를 통해 bean을 꺼내든지
 	//applicationContext를 통해 꺼내도된다.
 	//DI 를 통해(autowired)를 통해 꺼내쓰는 방법이 더 자주 이용된다.
