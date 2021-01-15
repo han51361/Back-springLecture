@@ -17,6 +17,7 @@ package org.springframework.samples.petclinic.owner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.samples.petclinic.sample.SampleRepository;
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,14 +44,32 @@ class OwnerController {
 	//autowired 를 통해 bean을 꺼내든지
 	//applicationContext를 통해 꺼내도된다.
 	//DI 를 통해(autowired)를 통해 꺼내쓰는 방법이 더 자주 이용된다.
-	@Autowired
+
+	//field 에 DI 연결
+	//	@Autowired
 	private final OwnerRepository owners;
+
 
 	private VisitRepository visits;
 
+/*	sampleRepository 가져와서 주입을 해달라고하면 application이 뜨질 않는다.
+	왜냐 ownercontroller에 필요한 의존성을 넣어줄 수 없기 떄문에
+	bean을 찾을 수 없다 매칭 불가
+	@Autowired
+	private SampleRepository sampleRepository;*/
 
 
-	public OwnerController(OwnerRepository clinicService,ApplicationContext applicationContext, VisitRepository visits) {
+/*	Setter에 Di 연결
+	@Autowired
+	public void setOwners(OwnerRepository owners) {
+		this.owners = owners;
+	}*/
+
+	@Autowired
+	private PetRepository petRepository;
+
+
+	public OwnerController(OwnerRepository clinicService, ApplicationContext applicationContext, VisitRepository visits) {
 		this.owners = clinicService;
 		this.visits = visits;
 
