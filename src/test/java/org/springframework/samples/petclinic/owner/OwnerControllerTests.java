@@ -72,6 +72,12 @@ class OwnerControllerTests {
 
 	@Test
 	public void getBean(){
+
+
+		// 이 객체는 Bean이 아니다. 이거는 그저 객체일 뿐
+		//OwnerController owenerController = new OwnerController();
+
+		// 예는 bean이다.  applicationContext 가 불러내는 객체
 		OwnerController bean = applicationContext.getBean(OwnerController.class);
 		assertThat(bean).isNotNull();
 

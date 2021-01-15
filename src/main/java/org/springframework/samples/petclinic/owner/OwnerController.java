@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.owner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,10 @@ class OwnerController {
 
 	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
 
+	//autowired 를 통해 bean을 꺼내든지
+	//applicationContext를 통해 꺼내도된다.
+	//DI 를 통해(autowired)를 통해 꺼내쓰는 방법이 더 자주 이용된다.
+	@Autowired
 	private final OwnerRepository owners;
 
 	private VisitRepository visits;
@@ -51,11 +56,7 @@ class OwnerController {
 
 	}
 
-	@GetMapping("/bean")
-	@ResponseBody
-	public String bean(){
-		return"bean: " +  owners;
-	}
+
 	@InitBinder
 	public void setAllowedFields(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");

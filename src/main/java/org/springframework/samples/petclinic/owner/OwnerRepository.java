@@ -34,7 +34,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Michael Isvy
  */
 public interface OwnerRepository extends Repository<Owner, Integer> {
-
+// repository 인터페이스는 repository 를 상속받음으로써 annotation을 달아주지 않더라도 상속받고 있는  구현체를 내부적으로 만들어서 자동적으로 만들어준다.
 	/**
 	 * Retrieve {@link Owner}s from the data store by last name, returning all owners
 	 * whose last name <i>starts</i> with the given name.
