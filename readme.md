@@ -43,3 +43,34 @@ Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) applicatio
 - 그리고 원본 클래스가 사용되는 지점에서 프록시를 대신 사용한다. 
 
 - ex)  `@Transactional`
+
+
+# 11강 Spring @AOP
+- 직접 AOP 기능 구현해보기  
+- @LogExecutionTime 으로 메스도 처리 시간 로깅하기 
+- @LogExecutionIme  Annotation은 실제 기능이 아닌 `Marker의 역할만 수행`
+- 실제 기능은 Aspect(Aspect class)가 @LogExecutionTime 어노테이션이 달린 곳을 찾아 적용
+
+# 12강 Spring PSA(Portable Service Abstraction)
+-기존  서블릿 기반으로 url mapping이 동작 -> Spring 어노테이션을 통하여 동작 
+
+###### **스프링 웹 MVC**
+
+ - Model / View / Controller
+ - `@Controller & @RequestMapping`
+ - `Servlet or Reactive`
+ - `Tomcat, netty ...`
+ - 서비스를 추상화 계층에 만듬 ->  http servlet 을 직접 쓰지 않아도 됌/ 서비스를 로우 레벨에서 사용하지 않아도 된다.  /  매핑도 간편하다. 
+ 
+ 
+#### **스프링 트랜잭션**
+
+이거하나로 해결 
+- `@Transactional`
+
+-> 기존 원래 트랜잭션 처리
+dbConnection.setAutoCommit(false);
+
+-> ...
+
+-> dbConnection.commit or dbConnection.rollback;
