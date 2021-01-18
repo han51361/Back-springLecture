@@ -54,7 +54,7 @@ Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) applicatio
 # 12강 Spring PSA(Portable Service Abstraction)
 -기존  서블릿 기반으로 url mapping이 동작 -> Spring 어노테이션을 통하여 동작 
 
-###### **스프링 웹 MVC**
+## **스프링 웹 MVC**
 
  - Model / View / Controller
  - `@Controller & @RequestMapping`
@@ -63,7 +63,7 @@ Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) applicatio
  - 서비스를 추상화 계층에 만듬 ->  http servlet 을 직접 쓰지 않아도 됌/ 서비스를 로우 레벨에서 사용하지 않아도 된다.  /  매핑도 간편하다. 
  
  
-#### **스프링 트랜잭션**
+## **스프링 트랜잭션**
 
 이거하나로 해결 
 - `@Transactional`
